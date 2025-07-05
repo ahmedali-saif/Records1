@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نظام الدخول الآمن</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://i.top4top.io/p_3473ntgjy1.gif');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 350px;
+      text-align: center;
+    }
+
+    .overlay h2 {
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: right;
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 40px 10px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 38px;
+      left: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      user-select: none;
+      color: #555;
+    }
+
+    button {
+      background-color: #00796B;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h2>تسجيل الدخول</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">اسم المستخدم:</label>
+        <input type="text" id="username" required />
+      </div>
+      <div class="input-group">
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" required />
+        <span class="toggle-password" id="togglePassword">👁</span>
+      </div>
+      <button type="submit">دخول</button>
+      <div id="errorMessage" class="error-message">
+        اسم المستخدم أو كلمة المرور غير صحيحة
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // عرض وإخفاء كلمة المرور
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordField = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function () {
+      const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordField.setAttribute('type', type);
+      togglePassword.textContent = type === 'password' ? '👁' : '🚫';
+    });
+
+    // التحقق من بيانات المستخدم
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const users = {
+        "abdallah": {
+          password: "Da@2025#",
+          url: "https://docs.google.com/spreadsheets/d/1DPNwOPB4gSG2sEh4bZ8OAOgccrCtPUodAGTuloan4T4/edit?gid=1876622398#gid=1876622398"
+        },
+        "samia": {
+          password: "2025",
+          url: "https://docs.google.com/spreadsheets/d/1PE7BkD-NFHaDtJRG6dYer6URAcqymS-8qwvgPdYYb-Y/edit?gid=1876622398#gid=1876622398"
+        },
+        "abubaker": {
+          password: "12345",
+          url: "https://docs.google.com/spreadsheets/d/1aiae5F0Q0uOyD4SVDkuL00JqWZ-sQdMgxBCG8GOjJnw/edit?gid=1876622398#gid=1876622398"
+        }
+      };
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (users[username] && users[username].password === password) {
+        window.location.href = users[username].url;
+      } else {
+        document.getElementById('errorMessage').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
+
