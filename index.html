@@ -6025,13 +6025,11 @@ function fin_localToday() {
     </button>
   </div>
 
-<div id="fin_dateRow" style="display:flex;gap:12px;justify-content:center;align-items:center;margin:10px 0;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:6px"><label style="font-weight:bold">من تاريخ:</label><input type="date" id="dtr_dateFrom"></div>
-    <div style="display:flex;align-items:center;gap:6px"><label style="font-weight:bold">إلى تاريخ:</label><input type="date" id="dtr_dateTo"></div>
+<div style="display:flex;gap:12px;justify-content:center;align-items:center;margin:10px 0;flex-wrap:wrap">
     <button class="save" onclick="dtr_userClick=true; dtr_loadData()">🔍 بحث</button>
-<button class="print-btn" onclick="dtr_printAll()">🖨️ طباعة</button>
-<button class="update" onclick="dtr_userClick=true; dtr_loadData()">🔄 تحديث</button>
-  </div>
+    <button class="print-btn" onclick="dtr_printAll()">🖨️ طباعة</button>
+    <button class="update" onclick="dtr_userClick=true; dtr_loadData()">🔄 تحديث</button>
+</div>
 
   <div id="dtr_chartContainer"><canvas id="dtr_mainChart"></canvas></div>
 
@@ -6129,8 +6127,8 @@ async function dtr_loadDiseaseList() {
 
 async function dtr_loadData() {
   var disease  = document.getElementById('dtr_diseaseSelect').value;
-  var dateFrom = document.getElementById('dtr_dateFrom').value;
-  var dateTo   = document.getElementById('dtr_dateTo').value;
+   var dateFrom = '';
+   var dateTo   = '';
 
   // إظهار / إخفاء زرا التبديل
   var toggle = document.getElementById('dtr_viewToggle');
