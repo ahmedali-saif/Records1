@@ -6629,7 +6629,7 @@ async function ani_loadData() {
   loadingMsg.textContent   = '⏳ جاري تحميل البيانات...';
   resultsContainer.style.display = 'none';
   try {
-    var regionMap = await ani_callApi("getVaccinationByRegion");
+    var regionMap = await ani_callApi("getVaccinationByRegion", { dateFrom: '', dateTo: '' });
     ani_renderTable(regionMap);
   } catch (err) {
     loadingMsg.textContent = '❌ خطأ: ' + err.message;
